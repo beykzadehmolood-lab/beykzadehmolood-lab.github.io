@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Molood Beykzadeh — Engineer & STEAM Educator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#10213F;
+    --cream:#FDFBF4;
+    --blue:#2B6CFF;
+    --coral:#FF6A4D;
+    --yellow:#FFC93C;
+    --mint:#2FBF8F;
+    --line: rgba(16,33,63,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--navy);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    margin:0;
+    line-height:1.1;
+  }
+  a{color:inherit;}
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  .hero{
+    position:relative;
+    padding:88px 0 64px;
+    overflow:hidden;
+    border-bottom:2px solid var(--navy);
+  }
+  .circuit{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    opacity:0.9;
+  }
+  .hero .wrap{position:relative; z-index:1;}
+  .eyebrow-dot{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:14px;
+    font-weight:600;
+    color:var(--navy);
+    background:var(--yellow);
+    padding:6px 14px 6px 10px;
+    border-radius:999px;
+    border:2px solid var(--navy);
+    margin-bottom:28px;
+  }
+  .eyebrow-dot span.pulse{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--coral);
+    box-shadow:0 0 0 3px rgba(255,106,77,0.25);
+  }
+  h1{
+    font-size:clamp(38px, 7vw, 58px);
+    font-weight:700;
+    letter-spacing:-0.02em;
+  }
+  .role{
+    margin-top:14px;
+    font-size:19px;
+    font-weight:500;
+    color:var(--navy);
+  }
+  .role b{color:var(--blue);}
+  .tagline{
+    margin-top:22px;
+    max-width:46ch;
+    font-size:18px;
+    color:#33425F;
+  }
+  .hero-links{
+    margin-top:36px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 20px;
+    border-radius:10px;
+    font-weight:600;
+    font-size:15px;
+    text-decoration:none;
+    border:2px solid var(--navy);
+    transition:transform .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn.solid{background:var(--navy); color:var(--cream);}
+  .btn.ghost{background:transparent; color:var(--navy);}
+
+  section{padding:64px 0;}
+  section + section{border-top:2px solid var(--line);}
+  .label{
+    font-size:14px;
+    font-weight:600;
+    color:var(--coral);
+    margin-bottom:16px;
+    display:block;
+  }
+  .about p{
+    font-size:18px;
+    max-width:64ch;
+    color:#233150;
+  }
+  .about p + p{margin-top:18px;}
+
+  .timeline{
+    position:relative;
+    margin-top:8px;
+    padding-left:28px;
+    border-left:3px solid var(--navy);
+  }
+  .tl-item{
+    position:relative;
+    padding-bottom:34px;
+  }
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:"";
+    position:absolute;
+    left:-37px;
+    top:4px;
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    background:var(--mint);
+    border:3px solid var(--navy);
+  }
+  .tl-item.circuit-dot::before{background:var(--blue);}
+  .tl-years{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    color:var(--blue);
+  }
+  .tl-title{
+    font-size:20px;
+    font-weight:700;
+    margin-top:4px;
+  }
+  .tl-desc{
+    margin-top:6px;
+    color:#3B4A68;
+    max-width:56ch;
+  }
+
+  .pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:8px;
+  }
+  .pill{
+    padding:9px 16px;
+    border-radius:999px;
+    border:2px solid var(--navy);
+    font-size:14px;
+    font-weight:600;
+    background:var(--cream);
+  }
+  .pill:nth-child(4n+1){background:#DCEBFF;}
+  .pill:nth-child(4n+2){background:#FFE3D6;}
+  .pill:nth-child(4n+3){background:#FFF1C4;}
+  .pill:nth-child(4n+4){background:#D8F5E8;}
+
+  .callout{
+    margin-top:8px;
+    border:2px solid var(--navy);
+    border-radius:16px;
+    padding:26px 26px;
+    background:linear-gradient(135deg, #FFF1C4 0%, #FFE3D6 100%);
+  }
+  .callout .tl-title{margin-top:0;}
+  .callout .tl-desc{color:#233150;}
+
+  footer{
+    padding:56px 0 72px;
+  }
+  footer h2{font-size:26px;}
+  .contact-row{
+    margin-top:22px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .foot-note{
+    margin-top:48px;
+    font-size:13px;
+    color:#6A7590;
+  }
+
+  @media (max-width:560px){
+    .hero{padding:64px 0 48px;}
+    section{padding:48px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg class="circuit" viewBox="0 0 800 420" preserveAspectRatio="xMaxYMin slice" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#10213F" stroke-width="2" opacity="0.14">
+      <path d="M520 0 V60 H620 V140"/>
+      <path d="M620 140 H720 V220"/>
+      <path d="M660 0 V30 H760 V100 H800"/>
+      <path d="M560 420 V340 H480 V260"/>
+      <path d="M480 260 H400 V180"/>
+      <path d="M720 220 V300 H800"/>
+      <path d="M400 180 H320 V100"/>
+    </g>
+    <g fill="#2B6CFF" opacity="0.5">
+      <circle cx="520" cy="60" r="4"/>
+      <circle cx="620" cy="140" r="4"/>
+      <circle cx="720" cy="220" r="4"/>
+      <circle cx="480" cy="260" r="4"/>
+      <circle cx="400" cy="180" r="4"/>
+    </g>
+    <g fill="#FF6A4D" opacity="0.55">
+      <circle cx="620" cy="0" r="4"/>
+      <circle cx="760" cy="100" r="4"/>
+      <circle cx="560" cy="420" r="4"/>
+      <circle cx="320" cy="100" r="4"/>
+    </g>
+  </svg>
+
+  <div class="wrap">
+    <div class="eyebrow-dot"><span class="pulse"></span>Engineering × Education</div>
+    <h1>Molood Beykzadeh</h1>
+    <div class="role">M.Sc. Electrical Engineering &nbsp;·&nbsp; <b>Deputy General Director, MegaKLG</b></div>
+    <p class="tagline">Thirteen years spent moving between circuit boards and classrooms — building the STEAM programs that turn technical ideas into hands-on learning for children and teenagers.</p>
+    <div class="hero-links">
+      <a class="btn solid" href="mailto:Beykzadehmolood@gmail.com">Email me</a>
+      <a class="btn ghost" href="https://www.megaklg.com" target="_blank" rel="noopener">MegaKLG →</a>
+    </div>
+  </div>
+</header>
+
+<section class="about">
+  <div class="wrap">
+    <span class="label">About</span>
+    <p>Molood is an M.Sc. in Electrical Engineering and Deputy General Director at MegaKLG, with over 13 years of professional experience spanning engineering and education — four years as a Circuit Designer and nine years in educational management and STEAM education at MegaKLG.</p>
+    <p>Her work sits at the intersection of engineering, education, teacher development, and practical learning, with a consistent focus on turning knowledge into meaningful, hands-on experiences for young learners.</p>
+  </div>
+</section>
+
+<section class="experience">
+  <div class="wrap">
+    <span class="label">Experience</span>
+    <div class="timeline">
+      <div class="tl-item circuit-dot">
+        <div class="tl-years">4 years</div>
+        <div class="tl-title">Circuit Designer</div>
+        <div class="tl-desc">Hands-on electronics and circuit design work that now underpins MegaKLG's approach to teaching STEAM concepts through real hardware.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-years">9 years</div>
+        <div class="tl-title">Educational Management & STEAM Education — MegaKLG</div>
+        <div class="tl-desc">Co-founder and Deputy General Director, leading STEAM education, educational product design, and programs in electronics, IoT, AI and machine learning for young learners.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="focus">
+  <div class="wrap">
+    <span class="label">What she does day to day</span>
+    <div class="pills">
+      <span class="pill">Specialized teacher training</span>
+      <span class="pill">Lesson-plan development</span>
+      <span class="pill">Educational program coordination</span>
+      <span class="pill">School & parent communication</span>
+      <span class="pill">STEAM curriculum design</span>
+      <span class="pill">IoT & AI for young learners</span>
+    </div>
+
+    <div class="callout" style="margin-top:36px;">
+      <div class="tl-title">Representing MegaKLG internationally</div>
+      <div class="tl-desc">She takes part in school presentations and strategic meetings alongside MegaKLG's founder, and has represented MegaKLG — as an Iranian company — at the SCO Business Incubator in Omsk, Russia, presenting the company's educational approach on an international stage.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="label">Get in touch</span>
+    <h2>Let's talk engineering, education, or both.</h2>
+    <div class="contact-row">
+      <a class="btn solid" href="mailto:Beykzadehmolood@gmail.com">Beykzadehmolood@gmail.com</a>
+      <a class="btn ghost" href="https://www.megaklg.com" target="_blank" rel="noopener">www.megaklg.com</a>
+    </div>
+    <div class="foot-note">Molood Beykzadeh — STEAM & Educational Technology Specialist</div>
+  </div>
+</footer>
+
+</body>
+</html>

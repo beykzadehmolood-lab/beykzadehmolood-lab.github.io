@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Molood Beykzadeh — Engineer & STEAM Educator</title>
+<title>Molood Beykzadeh — Engineer &amp; STEAM Educator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -26,6 +26,7 @@
     font-family:'Work Sans', sans-serif;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
   h1,h2,h3{
     font-family:'Space Grotesk', sans-serif;
@@ -38,20 +39,45 @@
     margin:0 auto;
     padding:0 28px;
   }
-
-  .hero{
-    position:relative;
-    padding:88px 0 64px;
-    overflow:hidden;
-    border-bottom:2px solid var(--navy);
+  .page{
+    display:none;
+    min-height:100vh;
+    animation:fadeIn .35s ease;
   }
+  .page.active{display:block;}
+  @keyframes fadeIn{
+    from{opacity:0; transform:translateY(8px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  /* ===== HOME PAGE ===== */
+  #page-home{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:48px 28px;
+    position:relative;
+    overflow:hidden;
+  }
+  #page-home.active{display:flex;}
   .circuit{
     position:absolute;
     inset:0;
     z-index:0;
-    opacity:0.9;
+    opacity:0.85;
+    pointer-events:none;
   }
-  .hero .wrap{position:relative; z-index:1;}
+  .home-inner{position:relative; z-index:1; max-width:420px;}
+  .avatar{
+    width:168px;
+    height:168px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid var(--navy);
+    box-shadow:0 10px 0 -4px var(--yellow), 0 10px 24px rgba(16,33,63,0.25);
+    margin-bottom:28px;
+  }
   .eyebrow-dot{
     display:inline-flex;
     align-items:center;
@@ -63,55 +89,96 @@
     padding:6px 14px 6px 10px;
     border-radius:999px;
     border:2px solid var(--navy);
-    margin-bottom:28px;
+    margin-bottom:22px;
   }
   .eyebrow-dot span.pulse{
     width:8px;height:8px;border-radius:50%;
     background:var(--coral);
     box-shadow:0 0 0 3px rgba(255,106,77,0.25);
   }
-  h1{
-    font-size:clamp(38px, 7vw, 58px);
+  h1.name{
+    font-size:clamp(32px, 8vw, 46px);
     font-weight:700;
     letter-spacing:-0.02em;
   }
   .role{
-    margin-top:14px;
-    font-size:19px;
+    margin-top:12px;
+    font-size:17px;
     font-weight:500;
-    color:var(--navy);
-  }
-  .role b{color:var(--blue);}
-  .tagline{
-    margin-top:22px;
-    max-width:46ch;
-    font-size:18px;
     color:#33425F;
   }
-  .hero-links{
-    margin-top:36px;
+  .role b{color:var(--blue);}
+  .home-links{
+    margin-top:34px;
     display:flex;
     flex-wrap:wrap;
+    justify-content:center;
     gap:12px;
   }
+
+  /* ===== BUTTONS ===== */
   .btn{
     display:inline-flex;
     align-items:center;
     gap:8px;
-    padding:12px 20px;
+    padding:13px 24px;
     border-radius:10px;
     font-weight:600;
     font-size:15px;
     text-decoration:none;
     border:2px solid var(--navy);
-    transition:transform .15s ease;
+    background:var(--navy);
+    color:var(--cream);
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+    font-family:inherit;
   }
-  .btn:hover{transform:translateY(-2px);}
-  .btn.solid{background:var(--navy); color:var(--cream);}
+  .btn:hover{transform:translateY(-2px); box-shadow:0 6px 0 -2px rgba(16,33,63,0.15);}
   .btn.ghost{background:transparent; color:var(--navy);}
+  .btn.small{padding:9px 16px; font-size:13px;}
 
-  section{padding:64px 0;}
-  section + section{border-top:2px solid var(--line);}
+  .back-bar{
+    padding:20px 0;
+    position:sticky;
+    top:0;
+    background:var(--cream);
+    z-index:5;
+    border-bottom:2px solid var(--line);
+  }
+
+  /* ===== ABOUT MENU ===== */
+  #page-about{padding:64px 0 64px;}
+  .section-title{
+    font-size:clamp(26px,5vw,34px);
+    margin-bottom:8px;
+  }
+  .section-sub{color:#5B6884; margin-bottom:36px; font-size:16px;}
+  .choice-grid{
+    display:grid;
+    gap:18px;
+  }
+  .choice-card{
+    display:block;
+    text-align:left;
+    padding:26px;
+    border-radius:16px;
+    border:2px solid var(--navy);
+    background:var(--cream);
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+    font-family:inherit;
+    width:100%;
+  }
+  .choice-card:hover{transform:translateY(-3px); box-shadow:0 8px 0 -3px rgba(16,33,63,0.15);}
+  .choice-card:nth-child(1){background:#DCEBFF;}
+  .choice-card:nth-child(2){background:#FFE3D6;}
+  .choice-icon{font-size:30px; margin-bottom:12px; display:block;}
+  .choice-title{font-family:'Space Grotesk', sans-serif; font-size:20px; font-weight:700;}
+  .choice-desc{margin-top:6px; color:#3B4A68; font-size:15px;}
+  .choice-arrow{margin-top:14px; font-weight:600; font-size:14px; color:var(--blue);}
+
+  /* ===== SHARED CONTENT SECTIONS ===== */
+  .content-section{padding:0 0 72px;}
   .label{
     font-size:14px;
     font-weight:600;
@@ -128,22 +195,17 @@
 
   .timeline{
     position:relative;
-    margin-top:8px;
+    margin-top:24px;
     padding-left:28px;
     border-left:3px solid var(--navy);
   }
-  .tl-item{
-    position:relative;
-    padding-bottom:34px;
-  }
+  .tl-item{position:relative; padding-bottom:34px;}
   .tl-item:last-child{padding-bottom:0;}
   .tl-item::before{
     content:"";
     position:absolute;
-    left:-37px;
-    top:4px;
-    width:16px;
-    height:16px;
+    left:-37px; top:4px;
+    width:16px; height:16px;
     border-radius:50%;
     background:var(--mint);
     border:3px solid var(--navy);
@@ -151,33 +213,15 @@
   .tl-item.circuit-dot::before{background:var(--blue);}
   .tl-years{
     font-family:'Space Grotesk', sans-serif;
-    font-weight:600;
-    font-size:15px;
-    color:var(--blue);
+    font-weight:600; font-size:15px; color:var(--blue);
   }
-  .tl-title{
-    font-size:20px;
-    font-weight:700;
-    margin-top:4px;
-  }
-  .tl-desc{
-    margin-top:6px;
-    color:#3B4A68;
-    max-width:56ch;
-  }
+  .tl-title{font-size:20px; font-weight:700; margin-top:4px;}
+  .tl-desc{margin-top:6px; color:#3B4A68; max-width:56ch;}
 
-  .pills{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:8px;
-  }
+  .pills{display:flex; flex-wrap:wrap; gap:10px; margin-top:8px;}
   .pill{
-    padding:9px 16px;
-    border-radius:999px;
-    border:2px solid var(--navy);
-    font-size:14px;
-    font-weight:600;
+    padding:9px 16px; border-radius:999px;
+    border:2px solid var(--navy); font-size:14px; font-weight:600;
     background:var(--cream);
   }
   .pill:nth-child(4n+1){background:#DCEBFF;}
@@ -186,87 +230,149 @@
   .pill:nth-child(4n+4){background:#D8F5E8;}
 
   .callout{
-    margin-top:8px;
+    margin-top:36px;
     border:2px solid var(--navy);
     border-radius:16px;
-    padding:26px 26px;
+    padding:26px;
     background:linear-gradient(135deg, #FFF1C4 0%, #FFE3D6 100%);
   }
   .callout .tl-title{margin-top:0;}
   .callout .tl-desc{color:#233150;}
+  .sco-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:18px;
+  }
+  .sco-grid img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:10px;
+    border:2px solid var(--navy);
+    aspect-ratio:1/1;
+    transition:transform .2s ease;
+  }
+  .sco-grid img:hover{transform:scale(1.04);}
 
-  footer{
-    padding:56px 0 72px;
+  /* ===== GALLERY ===== */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:20px;
+    margin-top:24px;
   }
-  footer h2{font-size:26px;}
-  .contact-row{
-    margin-top:22px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:14px;
+  .gallery-card{
+    border:2px solid var(--navy);
+    border-radius:16px;
+    overflow:hidden;
+    background:#fff;
   }
-  .foot-note{
-    margin-top:48px;
-    font-size:13px;
-    color:#6A7590;
+  .gallery-card img{
+    width:100%;
+    display:block;
+    transition:transform .3s ease;
   }
+  .gallery-card:hover img{transform:scale(1.03);}
+  .gallery-caption{
+    padding:14px 18px;
+    font-size:14px;
+    color:#3B4A68;
+    background:#FFF8EC;
+    border-top:2px solid var(--line);
+  }
+
+  /* ===== FOOTER ===== */
+  footer{padding:56px 0 72px;}
+  footer h2{font-size:24px;}
+  .contact-row{margin-top:22px; display:flex; flex-wrap:wrap; gap:12px;}
+  .foot-note{margin-top:44px; font-size:13px; color:#6A7590;}
 
   @media (max-width:560px){
-    .hero{padding:64px 0 48px;}
-    section{padding:48px 0;}
+    .content-section{padding-bottom:56px;}
   }
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <svg class="circuit" viewBox="0 0 800 420" preserveAspectRatio="xMaxYMin slice" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke="#10213F" stroke-width="2" opacity="0.14">
+<!-- ============ HOME PAGE ============ -->
+<div class="page active" id="page-home">
+  <svg class="circuit" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#10213F" stroke-width="2" opacity="0.10">
       <path d="M520 0 V60 H620 V140"/>
       <path d="M620 140 H720 V220"/>
       <path d="M660 0 V30 H760 V100 H800"/>
-      <path d="M560 420 V340 H480 V260"/>
-      <path d="M480 260 H400 V180"/>
+      <path d="M560 800 V720 H480 V640"/>
+      <path d="M480 640 H400 V560"/>
       <path d="M720 220 V300 H800"/>
-      <path d="M400 180 H320 V100"/>
+      <path d="M400 560 H320 V480"/>
+      <path d="M0 400 H80 V320 H160"/>
+      <path d="M0 500 H120 V580"/>
     </g>
-    <g fill="#2B6CFF" opacity="0.5">
+    <g fill="#2B6CFF" opacity="0.4">
       <circle cx="520" cy="60" r="4"/>
       <circle cx="620" cy="140" r="4"/>
       <circle cx="720" cy="220" r="4"/>
-      <circle cx="480" cy="260" r="4"/>
-      <circle cx="400" cy="180" r="4"/>
+      <circle cx="480" cy="640" r="4"/>
+      <circle cx="400" cy="560" r="4"/>
     </g>
-    <g fill="#FF6A4D" opacity="0.55">
+    <g fill="#FF6A4D" opacity="0.45">
       <circle cx="620" cy="0" r="4"/>
       <circle cx="760" cy="100" r="4"/>
-      <circle cx="560" cy="420" r="4"/>
-      <circle cx="320" cy="100" r="4"/>
+      <circle cx="560" cy="800" r="4"/>
+      <circle cx="320" cy="480" r="4"/>
     </g>
   </svg>
-
-  <div class="wrap">
+  <div class="home-inner">
     <div class="eyebrow-dot"><span class="pulse"></span>Engineering × Education</div>
-    <h1>Molood Beykzadeh</h1>
-    <div class="role">M.Sc. Electrical Engineering &nbsp;·&nbsp; <b>Deputy General Director, MegaKLG</b></div>
-    <p class="tagline">Thirteen years spent moving between circuit boards and classrooms — building the STEAM programs that turn technical ideas into hands-on learning for children and teenagers.</p>
-    <div class="hero-links">
-      <a class="btn solid" href="mailto:Beykzadehmolood@gmail.com">Email me</a>
-      <a class="btn ghost" href="https://www.megaklg.com" target="_blank" rel="noopener">MegaKLG →</a>
+    <img class="avatar" src="https://github.com/user-attachments/assets/240432fb-aeb7-4757-8822-911d00a12180" alt="Molood Beykzadeh">
+    <h1 class="name">Molood Beykzadeh</h1>
+    <div class="role">M.Sc. Electrical Engineering<br><b>Deputy General Director, MegaKLG</b></div>
+    <div class="home-links">
+      <button class="btn" onclick="showPage('page-about')">About Me</button>
+      <a class="btn ghost" href="mailto:Beykzadehmolood@gmail.com">Email me</a>
     </div>
   </div>
-</header>
+</div>
 
-<section class="about">
-  <div class="wrap">
-    <span class="label">About</span>
-    <p>Molood is an M.Sc. in Electrical Engineering and Deputy General Director at MegaKLG, with over 13 years of professional experience spanning engineering and education — four years as a Circuit Designer and nine years in educational management and STEAM education at MegaKLG.</p>
-    <p>Her work sits at the intersection of engineering, education, teacher development, and practical learning, with a consistent focus on turning knowledge into meaningful, hands-on experiences for young learners.</p>
+<!-- ============ ABOUT MENU PAGE ============ -->
+<div class="page" id="page-about">
+  <div class="back-bar wrap">
+    <button class="btn ghost small" onclick="showPage('page-home')">← Home</button>
   </div>
-</section>
+  <div class="wrap" style="padding-top:40px;">
+    <h2 class="section-title">About Me</h2>
+    <p class="section-sub">Choose what you'd like to see.</p>
+    <div class="choice-grid">
+      <button class="choice-card" onclick="showPage('page-experience')">
+        <span class="choice-icon">🛠️</span>
+        <div class="choice-title">Work Experience</div>
+        <div class="choice-desc">Engineering background, STEAM education career, and international representation.</div>
+        <div class="choice-arrow">View experience →</div>
+      </button>
+      <button class="choice-card" onclick="showPage('page-gallery')">
+        <span class="choice-icon">👨‍👩‍👧</span>
+        <div class="choice-title">Workshops &amp; Family Sessions</div>
+        <div class="choice-desc">Photos from hands-on STEAM workshops with children and families.</div>
+        <div class="choice-arrow">View photos →</div>
+      </button>
+    </div>
+  </div>
+</div>
 
-<section class="experience">
-  <div class="wrap">
+<!-- ============ EXPERIENCE PAGE ============ -->
+<div class="page" id="page-experience">
+  <div class="back-bar wrap">
+    <button class="btn ghost small" onclick="showPage('page-about')">← About Me</button>
+  </div>
+  <div class="wrap content-section" style="padding-top:40px;">
+
+    <div class="about" style="margin-bottom:48px;">
+      <span class="label">About</span>
+      <p>Molood is an M.Sc. in Electrical Engineering and Deputy General Director at MegaKLG, with over 13 years of professional experience spanning engineering and education — four years as a Circuit Designer and nine years in educational management and STEAM education at MegaKLG.</p>
+      <p>Her work sits at the intersection of engineering, education, teacher development, and practical learning, with a consistent focus on turning knowledge into meaningful, hands-on experiences for young learners.</p>
+    </div>
+
     <span class="label">Experience</span>
     <div class="timeline">
       <div class="tl-item circuit-dot">
@@ -276,43 +382,76 @@
       </div>
       <div class="tl-item">
         <div class="tl-years">9 years</div>
-        <div class="tl-title">Educational Management & STEAM Education — MegaKLG</div>
+        <div class="tl-title">Educational Management &amp; STEAM Education — MegaKLG</div>
         <div class="tl-desc">Co-founder and Deputy General Director, leading STEAM education, educational product design, and programs in electronics, IoT, AI and machine learning for young learners.</div>
       </div>
     </div>
-  </div>
-</section>
 
-<section class="focus">
-  <div class="wrap">
-    <span class="label">What she does day to day</span>
+    <span class="label" style="margin-top:48px; display:block;">What she does day to day</span>
     <div class="pills">
       <span class="pill">Specialized teacher training</span>
       <span class="pill">Lesson-plan development</span>
       <span class="pill">Educational program coordination</span>
-      <span class="pill">School & parent communication</span>
+      <span class="pill">School &amp; parent communication</span>
       <span class="pill">STEAM curriculum design</span>
-      <span class="pill">IoT & AI for young learners</span>
+      <span class="pill">IoT &amp; AI for young learners</span>
     </div>
 
-    <div class="callout" style="margin-top:36px;">
+    <div class="callout">
       <div class="tl-title">Representing MegaKLG internationally</div>
       <div class="tl-desc">She takes part in school presentations and strategic meetings alongside MegaKLG's founder, and has represented MegaKLG — as an Iranian company — at the SCO Business Incubator in Omsk, Russia, presenting the company's educational approach on an international stage.</div>
+      <div class="sco-grid">
+        <img src="https://github.com/user-attachments/assets/147053e3-3b41-4467-b32b-20ec96b789ae" alt="Receiving a certificate of participation at the SCO Business Incubator, Omsk, Russia">
+        <img src="https://github.com/user-attachments/assets/6c9b25b7-ad35-4130-b6fa-6a4f68a4a280" alt="Presenting MegaKLG's educational technology at the SCO Business Incubator">
+        <img src="https://github.com/user-attachments/assets/4c087a09-2932-48e7-8b74-cfce79959410" alt="With a fellow participant at the SCO Business Incubator, Omsk, Russia">
+        <img src="https://github.com/user-attachments/assets/22bcd3c5-dad6-4a17-9a86-129d5d972f34" alt="At the Youth Forum, SCO Business Incubator, Omsk, Russia">
+      </div>
     </div>
-  </div>
-</section>
 
-<footer>
-  <div class="wrap">
-    <span class="label">Get in touch</span>
-    <h2>Let's talk engineering, education, or both.</h2>
-    <div class="contact-row">
-      <a class="btn solid" href="mailto:Beykzadehmolood@gmail.com">Beykzadehmolood@gmail.com</a>
-      <a class="btn ghost" href="https://www.megaklg.com" target="_blank" rel="noopener">www.megaklg.com</a>
-    </div>
-    <div class="foot-note">Molood Beykzadeh — STEAM & Educational Technology Specialist</div>
+    <footer style="padding-left:0; padding-right:0;">
+      <span class="label">Get in touch</span>
+      <h2>Let's talk engineering, education, or both.</h2>
+      <div class="contact-row">
+        <a class="btn" href="mailto:Beykzadehmolood@gmail.com">Beykzadehmolood@gmail.com</a>
+        <a class="btn ghost" href="https://www.megaklg.com" target="_blank" rel="noopener">www.megaklg.com</a>
+      </div>
+    </footer>
   </div>
-</footer>
+</div>
+
+<!-- ============ GALLERY PAGE ============ -->
+<div class="page" id="page-gallery">
+  <div class="back-bar wrap">
+    <button class="btn ghost small" onclick="showPage('page-about')">← About Me</button>
+  </div>
+  <div class="wrap content-section" style="padding-top:40px;">
+    <span class="label">Workshops &amp; Family Sessions</span>
+    <h2 class="section-title" style="margin-bottom:10px;">Hands-on learning in action</h2>
+    <p class="section-sub">Moments from STEAM workshops held with children and their families.</p>
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <img src="https://github.com/user-attachments/assets/68f384a4-f124-4317-81f0-40eec1ff0fba" alt="STEAM workshop session with children and families">
+        <div class="gallery-caption">Outdoor STEAM workshop — hands-on activities with students and parents.</div>
+      </div>
+      <div class="gallery-card">
+        <img src="https://github.com/user-attachments/assets/c2226c44-6d20-4c88-ba71-f16ee56341f8" alt="STEAM workshop session with children and families">
+        <div class="gallery-caption">Families and students working together during a program session.</div>
+      </div>
+      <div class="gallery-card">
+        <img src="https://github.com/user-attachments/assets/0dbd2ae6-30ad-4e17-bbcb-43ea2d8a6e34" alt="STEAM workshop session with children and families">
+        <div class="gallery-caption">Group workshop moment with parents, children, and instructors.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showPage(id){
+    document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0,0);
+  }
+</script>
 
 </body>
 </html>

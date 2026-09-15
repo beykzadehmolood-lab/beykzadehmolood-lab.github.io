@@ -9,14 +9,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#181433;
-    --cream:#FFFBF3;
-    --purple:#7A4DE8;
-    --purple-dark:#5A32B8;
-    --orange:#FF7A45;
-    --green:#20B573;
-    --yellow:#FFC93C;
-    --side-w:96px;
+    --ink:#14213D;
+    --cream:#F7F5F0;
+    --accent:#0F766E;
+    --accent-dark:#0B5C56;
+    --gold:#B8902E;
+    --line:rgba(20,33,61,0.12);
+    --side-w:100px;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -42,58 +41,53 @@
     top:0; left:0; bottom:0;
     width:var(--side-w);
     background:#fff;
-    box-shadow:2px 0 18px rgba(122,77,232,0.10);
+    border-right:1px solid var(--line);
     display:flex;
     flex-direction:column;
     align-items:center;
-    padding:22px 0;
+    padding:26px 0;
     z-index:20;
   }
   .side-logo{
-    width:44px; height:44px;
-    border-radius:12px;
-    background:var(--purple);
+    width:40px; height:40px;
+    border-radius:10px;
+    background:var(--ink);
     display:flex; align-items:center; justify-content:center;
     font-family:'Space Grotesk', sans-serif;
-    font-weight:800;
+    font-weight:700;
     color:#fff;
-    font-size:18px;
-    margin-bottom:34px;
+    font-size:15px;
+    margin-bottom:40px;
     flex-shrink:0;
   }
   .side-nav{
     display:flex;
     flex-direction:column;
-    gap:6px;
+    gap:4px;
     flex:1;
   }
   .side-link{
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:5px;
-    padding:12px 4px;
-    border-radius:14px;
-    color:#9891B5;
+    padding:13px 4px;
+    border-radius:10px;
+    color:#8A8FA3;
     background:none;
     border:none;
+    border-left:2px solid transparent;
     cursor:pointer;
-    width:72px;
+    width:76px;
     transition:background .15s ease, color .15s ease;
   }
-  .side-link .ic{font-size:20px; line-height:1;}
-  .side-link .lb{font-size:10px; font-weight:600; letter-spacing:0.02em;}
-  .side-link:hover{color:var(--purple-dark); background:rgba(122,77,232,0.08);}
-  .side-link.active{color:#fff; background:var(--purple);}
+  .side-link .lb{font-size:10.5px; font-weight:600; letter-spacing:0.05em; text-transform:uppercase;}
+  .side-link:hover{color:var(--ink); background:rgba(20,33,61,0.04);}
+  .side-link.active{color:var(--accent); background:rgba(15,118,110,0.08); border-left:2px solid var(--accent);}
   .side-bottom{
     margin-top:auto;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:14px;
-  }
-  .side-dot{
-    width:8px; height:8px; border-radius:50%;
+    width:24px;
+    height:2px;
+    background:var(--gold);
   }
 
   /* ===== MAIN ===== */
@@ -146,13 +140,13 @@
     margin-top:14px;
     font-size:18px;
     font-weight:500;
-    color:#4A4468;
+    color:#5A5F73;
   }
-  .role b{color:var(--purple-dark);}
+  .role b{color:var(--accent);}
   .home-tagline{
     margin-top:18px;
     font-size:16px;
-    color:#5C5680;
+    color:#5A5F73;
     max-width:42ch;
   }
 
@@ -160,7 +154,7 @@
   .photo-frame-wrap{
     position:relative;
     width:100%;
-    max-width:340px;
+    max-width:320px;
     margin:0 auto;
   }
   .photo-frame{
@@ -168,38 +162,36 @@
     z-index:2;
     width:100%;
     aspect-ratio:4/5;
-    border-radius:36px;
+    border-radius:14px;
     overflow:hidden;
-    border:6px solid #fff;
-    box-shadow:0 18px 40px rgba(24,20,51,0.18);
+    box-shadow:0 20px 44px rgba(20,33,61,0.16);
   }
   .photo-frame img{
     width:100%; height:100%;
     object-fit:cover;
     display:block;
   }
-  .shape-circle{
+  .photo-ring{
     position:absolute;
-    border-radius:50%;
-    z-index:5;
+    top:-16px; right:-16px; bottom:16px; left:16px;
+    border:1.5px solid var(--accent);
+    border-radius:14px;
+    z-index:1;
   }
-  .shape-quarter{
+  .photo-tag{
     position:absolute;
-    z-index:5;
-  }
-  .shape-dots{
-    position:absolute;
-    z-index:5;
-    display:grid;
-    grid-template-columns:repeat(4, 8px);
-    gap:8px;
-  }
-  .shape-dots span{
-    width:8px; height:8px;
-    border-radius:50%;
+    bottom:-14px; left:-14px;
+    z-index:3;
     background:var(--ink);
-    opacity:0.7;
+    color:#fff;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    padding:8px 14px;
+    border-radius:8px;
   }
+  .photo-tag b{color:var(--gold);}
 
   /* ===== BUTTONS ===== */
   .btn{
@@ -207,33 +199,31 @@
     align-items:center;
     gap:8px;
     padding:13px 24px;
-    border-radius:12px;
-    font-weight:700;
+    border-radius:8px;
+    font-weight:600;
     font-size:15px;
     text-decoration:none;
-    border:none;
-    background:var(--purple);
+    border:1.5px solid var(--ink);
+    background:var(--ink);
     color:#fff;
     cursor:pointer;
-    transition:transform .15s ease, box-shadow .15s ease;
-    box-shadow:0 4px 0 var(--purple-dark);
+    transition:opacity .15s ease;
   }
-  .btn:hover{transform:translateY(2px); box-shadow:0 2px 0 var(--purple-dark);}
+  .btn:hover{opacity:0.85;}
   .btn.ghost{
     background:#fff;
     color:var(--ink);
-    border:2px solid var(--ink);
-    box-shadow:none;
+    border:1.5px solid var(--line);
   }
-  .btn.ghost:hover{transform:translateY(-2px); box-shadow:0 4px 0 -1px rgba(24,20,51,0.2);}
+  .btn.ghost:hover{border-color:var(--ink); opacity:1;}
 
   /* ===== SECTION HEADERS ===== */
   .eyebrow{
-    font-size:13px;
+    font-size:12px;
     font-weight:700;
-    color:var(--orange);
+    color:var(--accent);
     text-transform:uppercase;
-    letter-spacing:0.06em;
+    letter-spacing:0.08em;
     margin-bottom:10px;
     display:block;
   }
@@ -247,7 +237,7 @@
   .about p{
     font-size:18px;
     max-width:62ch;
-    color:#2E2A4A;
+    color:#3A3F52;
   }
   .about p + p{margin-top:16px;}
   .fact-grid{
@@ -258,15 +248,12 @@
   }
   .fact-card{
     padding:18px;
-    border-radius:16px;
-    border:2px solid var(--ink);
+    border-radius:10px;
+    border:1px solid var(--line);
+    background:#fff;
   }
-  .fact-card:nth-child(1){background:#EAE0FF;}
-  .fact-card:nth-child(2){background:#FFE3D6;}
-  .fact-card:nth-child(3){background:#DFF6E8;}
-  .fact-card:nth-child(4){background:#FFF1C4;}
-  .fact-num{font-family:'Space Grotesk', sans-serif; font-size:26px; font-weight:800;}
-  .fact-lb{font-size:13px; font-weight:600; color:#4A4468; margin-top:4px;}
+  .fact-num{font-family:'Space Grotesk', sans-serif; font-size:26px; font-weight:700; color:var(--accent);}
+  .fact-lb{font-size:13px; font-weight:500; color:#5A5F73; margin-top:4px;}
 
   /* ===== EXPERIENCE ===== */
   .timeline{
@@ -281,37 +268,34 @@
     content:"";
     position:absolute;
     left:-39px; top:4px;
-    width:16px; height:16px;
+    width:14px; height:14px;
     border-radius:50%;
-    background:var(--green);
-    border:3px solid var(--ink);
+    background:#fff;
+    border:3px solid var(--accent);
   }
-  .tl-item.alt::before{background:var(--purple);}
+  .tl-item.alt::before{border-color:var(--gold);}
   .tl-years{
     font-family:'Space Grotesk', sans-serif;
-    font-weight:700; font-size:15px; color:var(--purple-dark);
+    font-weight:700; font-size:14px; color:var(--accent);
+    letter-spacing:0.03em;
   }
-  .tl-title{font-size:19px; font-weight:700; margin-top:4px;}
-  .tl-desc{margin-top:6px; color:#4A4468; max-width:54ch; font-size:15px;}
+  .tl-title{font-size:18px; font-weight:700; margin-top:4px;}
+  .tl-desc{margin-top:6px; color:#5A5F73; max-width:54ch; font-size:15px;}
 
   .pills{display:flex; flex-wrap:wrap; gap:9px; margin-top:8px;}
   .pill{
-    padding:9px 15px; border-radius:999px;
-    border:2px solid var(--ink); font-size:13px; font-weight:700;
+    padding:8px 14px; border-radius:7px;
+    border:1px solid var(--line); font-size:13px; font-weight:500;
+    background:#fff; color:#3A3F52;
   }
-  .pill:nth-child(6n+1){background:#EAE0FF;}
-  .pill:nth-child(6n+2){background:#FFE3D6;}
-  .pill:nth-child(6n+3){background:#DFF6E8;}
-  .pill:nth-child(6n+4){background:#FFF1C4;}
-  .pill:nth-child(6n+5){background:#EAE0FF;}
-  .pill:nth-child(6n+6){background:#FFE3D6;}
 
   .callout{
     margin-top:32px;
-    border:2px solid var(--ink);
-    border-radius:18px;
+    border:1px solid var(--line);
+    border-radius:12px;
     padding:24px;
-    background:linear-gradient(135deg, #EAE0FF 0%, #FFE3D6 100%);
+    background:#fff;
+    border-left:3px solid var(--accent);
   }
   .callout .tl-title{margin-top:0;}
   .sco-grid{
@@ -323,8 +307,8 @@
   .sco-grid img{
     width:100%; height:100%;
     object-fit:cover;
-    border-radius:12px;
-    border:2px solid var(--ink);
+    border-radius:8px;
+    border:1px solid var(--line);
     aspect-ratio:1/1;
   }
 
@@ -336,8 +320,8 @@
     margin-top:8px;
   }
   .gallery-card{
-    border:2px solid var(--ink);
-    border-radius:18px;
+    border:1px solid var(--line);
+    border-radius:12px;
     overflow:hidden;
     background:#fff;
   }
@@ -345,21 +329,22 @@
   .gallery-caption{
     padding:14px 18px;
     font-size:14px;
-    color:#4A4468;
-    background:#FFF8EC;
-    border-top:2px solid var(--ink);
+    color:#5A5F73;
+    background:#fff;
+    border-top:1px solid var(--line);
   }
 
   /* ===== CONTACT ===== */
   .contact-card{
     margin-top:8px;
     padding:32px;
-    border-radius:20px;
-    border:2px solid var(--ink);
-    background:#EAE0FF;
+    border-radius:12px;
+    border:1px solid var(--line);
+    background:#fff;
+    border-left:3px solid var(--gold);
   }
   .contact-row{margin-top:22px; display:flex; flex-wrap:wrap; gap:12px;}
-  .foot-note{margin-top:36px; font-size:13px; color:#6A6488;}
+  .foot-note{margin-top:36px; font-size:13px; color:#8A8FA3;}
 
   @media (max-width:640px){
     :root{--side-w:76px;}
@@ -379,36 +364,29 @@
   <div class="side-logo">MB</div>
   <div class="side-nav">
     <button class="side-link active" data-target="sec-home" onclick="showSection('sec-home', this)">
-      <span class="ic">🏠</span><span class="lb">Home</span>
+      <span class="lb">Home</span>
     </button>
     <button class="side-link" data-target="sec-about" onclick="showSection('sec-about', this)">
-      <span class="ic">👤</span><span class="lb">About</span>
+      <span class="lb">About</span>
     </button>
     <button class="side-link" data-target="sec-experience" onclick="showSection('sec-experience', this)">
-      <span class="ic">🛠️</span><span class="lb">Work</span>
+      <span class="lb">Work</span>
     </button>
     <button class="side-link" data-target="sec-workshops" onclick="showSection('sec-workshops', this)">
-      <span class="ic">👨‍👩‍👧</span><span class="lb">Photos</span>
+      <span class="lb">Photos</span>
     </button>
     <button class="side-link" data-target="sec-contact" onclick="showSection('sec-contact', this)">
-      <span class="ic">✉️</span><span class="lb">Contact</span>
+      <span class="lb">Contact</span>
     </button>
   </div>
-  <div class="side-bottom">
-    <span class="side-dot" style="background:var(--purple);"></span>
-    <span class="side-dot" style="background:var(--orange);"></span>
-    <span class="side-dot" style="background:var(--green);"></span>
-    <span class="side-dot" style="background:var(--yellow);"></span>
-  </div>
+  <div class="side-bottom"></div>
 </nav>
 
 <div class="main">
 
-  <!-- decorative shapes -->
-  <div class="blob" style="width:260px;height:260px;background:var(--purple);top:-90px;right:-90px;"></div>
-  <div class="blob" style="width:160px;height:160px;background:var(--yellow);top:220px;right:60px;opacity:0.5;"></div>
-  <div class="blob" style="width:200px;height:200px;background:var(--green);bottom:-70px;left:-60px;opacity:0.35;"></div>
-  <div class="blob" style="width:120px;height:120px;background:var(--orange);bottom:120px;right:20%;opacity:0.4;"></div>
+  <!-- subtle accent -->
+  <div class="blob" style="width:340px;height:340px;background:var(--accent);top:-140px;right:-140px;opacity:0.05;"></div>
+  <div class="blob" style="width:220px;height:220px;background:var(--gold);bottom:-90px;left:-70px;opacity:0.06;"></div>
 
   <!-- ============ HOME ============ -->
   <section class="section active" id="sec-home">
@@ -420,16 +398,11 @@
           <p class="home-tagline">Thirteen years moving between circuit boards and classrooms, building STEAM programs for children and teenagers.</p>
         </div>
         <div class="photo-frame-wrap">
-          <div class="shape-circle" style="width:70px;height:70px;background:var(--green);top:-14px;left:-14px;"></div>
-          <div class="shape-quarter" style="width:64px;height:64px;background:var(--orange);top:-10px;right:-10px;border-radius:0 18px 0 18px;"></div>
-          <div class="shape-circle" style="width:110px;height:110px;background:var(--purple);bottom:-20px;left:-24px;opacity:0.9;"></div>
-          <div class="shape-dots" style="bottom:16px; right:-6px;">
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-          </div>
+          <div class="photo-ring"></div>
           <div class="photo-frame">
             <img src="https://github.com/user-attachments/assets/19ece925-b6d9-4903-96ae-333cd2434e19" alt="Molood Beykzadeh">
           </div>
+          <div class="photo-tag">STEAM <b>&amp;</b> Engineering</div>
         </div>
       </div>
     </div>
